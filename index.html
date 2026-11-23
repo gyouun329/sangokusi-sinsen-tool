@@ -95,17 +95,66 @@
 .general-db-name{display:flex;flex-direction:column;line-height:1.2;overflow-wrap:anywhere}
 .general-db-name .name-prefix{font-size:8px;color:var(--muted);font-weight:600;white-space:nowrap;letter-spacing:-.35px;line-height:1.05}
 .general-db-name .name-main{font-weight:800}
+
+/* Ver.32: readable, responsive usage guide */
+.guide-intro{background:#173047;border:1px solid #37617b;border-radius:14px;padding:14px 16px;margin:10px 0 16px;line-height:1.7}
+.guide-intro p{margin:4px 0 0}
+.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.guide-card{min-width:0;background:linear-gradient(145deg,#142137,#101a2b);border:1px solid var(--line);border-radius:15px;padding:16px}
+.guide-heading{display:flex;align-items:flex-start;gap:11px;margin-bottom:12px}
+.guide-number{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border-radius:9px;background:#2c806e;color:white;font-weight:850}
+.guide-heading h2{font-size:16px;line-height:1.4;margin:0}
+.guide-heading p{font-size:12px;color:var(--muted);line-height:1.5;margin:3px 0 0}
+.guide-sub{border-top:1px solid #ffffff18;padding-top:10px;margin-top:10px}
+.guide-sub h3{font-size:13px;margin:0 0 6px;color:#b8d9ed}
+.guide-sub ul{padding-left:1.25em;margin:5px 0 0;line-height:1.75;font-size:13px}
+.guide-sub li{padding-left:2px;margin:3px 0;overflow-wrap:anywhere}
+.guide-sub p{font-size:12px;line-height:1.7}
+.guide-note{background:#0c1626;border-left:3px solid #4c91a8;border-radius:6px;padding:9px 10px;margin:10px 0 0;color:#cbd5e1}
+@media(max-width:700px){
+ .guide-grid{grid-template-columns:minmax(0,1fr);gap:9px}
+ .guide-card{padding:12px;border-radius:12px}
+ .guide-heading{gap:9px;margin-bottom:9px}
+ .guide-number{width:27px;height:27px;flex-basis:27px;font-size:13px}
+ .guide-heading h2{font-size:15px}
+ .guide-heading p{font-size:11px}
+ .guide-sub{padding-top:8px;margin-top:8px}
+ .guide-sub h3{font-size:12px}
+ .guide-sub ul{font-size:12px;line-height:1.7;padding-left:1.2em}
+ .guide-sub li{margin:4px 0}
+ .guide-intro{font-size:12px;padding:11px 12px;line-height:1.65}
+ .guide-sub p{font-size:12px}
+}
+
 </style></head><body>
-<header><div class="brand">⚔ 三国志真戦 編成ツール <small>Formation Tool · App Ver.31 · Ver.27.1 data</small></div><div class="status" id="syncStatus">端末内に保存中</div></header>
+<header><div class="brand">⚔ 三国志真戦 編成ツール <small>Formation Tool · App Ver.32 · Ver.27.1 data</small></div><div class="status" id="syncStatus">端末内に保存中</div></header>
 <main><nav class="tabs" id="tabs">
 <button data-tab="guide">使い方</button><button class="active" data-tab="teams">編成作成</button><button data-tab="saved">構築済み編成</button><button data-tab="generals">武将データベース</button><button data-tab="search">戦法・兵法書データベース</button><button data-tab="advisors">軍師データベース</button><button data-tab="account">同期・設定</button></nav>
 <section id="guide" class="view" hidden>
-<div class="hero"><div><h1>使い方</h1><div class="muted small">編成の作成から保存・共有までの基本操作</div></div></div>
-<div class="panel"><h2>1. まずはデータベースを設定</h2><p>「武将データベース」で武将の凸数・秘蔵・アニメーション・兵種適性・ステータス・コストを確認し、編集ボタンから登録します。表示されているステータス数値は武将の<strong>Lv.50時点</strong>のものです。凸数が <strong class="guide-warning">未設定</strong> の武将は編成作成の選択肢に表示されません。自分で追加した武将は編集画面から削除できます（Excel収録の武将は削除できません）。コストは整数で設定します。武将名・固有戦法名は編集できません。</p><p>「軍師データベース」では軍師の所持状態を設定します。軍師名は編集できません。<strong class="guide-warning">未所持</strong> の軍師は編成作成の選択肢に表示されません。</p><p>「戦法・兵法書データベース」では戦法の所持状態を設定します。<strong class="guide-warning">未設定</strong> の戦法は編成で選択できません。戦法の種類も確認・編集できます。兵種戦法には対応する兵種（未設定・騎・槍・弓・盾）を登録できます。</p></div>
-<div class="panel"><h2>2. 編成を作成する</h2><p>「編成作成」でスタダ編成、または通常編成を設定します。通常編成は第一～第三候補を切り替えられ、それぞれ5部隊を管理できます。</p><p>各部隊で主将・副将の武将、戦法、兵法書、軍師、兵種を選択します。兵種を変更すると、選択した兵種に対する3武将それぞれの適性ランクが表示されます。適性はS・A・B・Cで色分けされ、武将の速度順も確認できます。</p><p>兵法書は大分類と小分類の組み合わせに制限があります。同じ武将の小分類兵法書が重複するとエラーになります。スタダ編成でも、覚醒前・覚醒後それぞれの中で武将・戦法・同じ武将の小分類兵法書が重複するとエラー表示されます。覚醒前と覚醒後は別々に判定するため、両方に同じ武将や戦法を設定してもエラーになりません。</p></div>
-<div class="panel"><h2>3. エラー表示を確認する</h2><p>編成内の同じ武将の重複、同じ候補内の別部隊での武将重複、軍師と武将の重複、同一部隊内または別部隊との戦法重複、同じ武将の小分類兵法書重複、同じ軍師の別部隊での重複、陣法・兵種戦法の各1つ制限、編成兵種と兵種戦法の不一致、コスト超過などは部隊ごとにエラー表示されます。SP・40Yなどの接頭表記が違っても、武将名本体が同じ場合は重複として判定します。</p><p>3人の陣営が同じ部隊は陣営色、陣営が異なる部隊は「混合」の紫色で表示されます。</p></div>
-<div class="panel"><h2>4. 保存・呼び出し・共有</h2><p>「編成を保存」で現在の編成を保存できます。「構築済み編成に登録」で作成した部隊を登録し、あとから呼び出して編集できます。「画像で共有」では編成内容を画像として出力できます。</p><p>「同期・設定」からJSON形式のバックアップを書き出し・読み込みできます。データは通常このブラウザ内に保存されます。別の端末でも使う場合はバックアップを移すか、Supabase同期を設定してください。</p></div>
-<div class="panel"><h2>5. 所持状態をリセットする</h2><p>各データベースにある「リセット」ボタンは対象ごとに独立しています。武将は凸数・秘蔵・アニメーション、軍師は所持状態、戦法は所持状態をそれぞれリセットできます。実行前の確認メッセージを確認してください。</p></div>
+<div class="hero"><div><h1>使い方</h1><div class="muted small">初期設定から編成・保存まで、順番に確認できます</div></div></div>
+<div class="guide-intro"><strong>おすすめの使い方</strong><p>①データベースで所持状況を設定 → ②編成を作成 → ③エラーを確認 → ④保存・バックアップ、の順に進めてください。</p></div>
+<div class="guide-grid">
+ <article class="guide-card"><div class="guide-heading"><span class="guide-number">1</span><div><h2>最初にデータベースを設定</h2><p>編成に使う武将・戦法・軍師を準備します。</p></div></div>
+  <div class="guide-sub"><h3>武将データベース</h3><ul><li>各武将の凸数・秘蔵・アニメーション・兵種適性・ステータス・コストを確認します。</li><li>凸数が<strong class="guide-warning">未設定</strong>の武将は、編成の選択肢に表示されません。未所持でも凸数などを設定すれば選択できます。</li><li>ステータスは<strong>Lv.50時点</strong>です。コストは整数で設定します。</li><li>武将名と固有戦法名は変更できません。自分で追加した武将は編集画面から削除できます（元データの武将は削除できません）。</li></ul></div>
+  <div class="guide-sub"><h3>戦法・兵法書データベース</h3><ul><li>戦法の所持状態を設定します。<strong class="guide-warning">未設定</strong>の戦法は編成で選べません。</li><li>戦法の種類（アクティブ・パッシブ・指揮・突撃・兵種・陣法）を確認できます。</li><li>兵種戦法には対応兵種「未設定・騎・槍・弓・盾」を設定します。編成側の兵種と一致している必要があります。</li><li>兵法書は大分類・小分類の色分けを参考に選択します。</li></ul></div>
+  <div class="guide-sub"><h3>軍師データベース</h3><ul><li>使用する軍師を<strong>所持</strong>に設定します。</li><li><strong class="guide-warning">未所持</strong>の軍師は編成の選択肢に表示されません。</li><li>軍師名と軍師の戦法名は変更できません。</li></ul></div>
+ </article>
+ <article class="guide-card"><div class="guide-heading"><span class="guide-number">2</span><div><h2>編成を作成する</h2><p>スタダ編成と通常編成を入力します。</p></div></div>
+  <div class="guide-sub"><h3>通常編成</h3><ul><li>第一～第三候補を切り替え、それぞれ最大5部隊を設定できます。</li><li>各部隊で編成名・兵種・主将／副将の武将・戦法・兵法書・軍師を選択します。</li><li>兵種を選ぶと、3武将の兵種適性と速度順が表示されます。</li><li>選択中の戦法・兵法書の枠は、データベースと同じ分類色で表示されます。</li><li>メモ欄には部隊ごとの補足を記録できます。</li></ul></div>
+  <div class="guide-sub"><h3>スタダ編成</h3><ul><li>「覚醒前」と「覚醒後」を分けて設定します。</li><li>覚醒前は各武将の戦法1つ、覚醒後は戦法2つと兵法書を設定できます。</li><li>覚醒前と覚醒後は別々に重複判定します。</li></ul></div>
+ </article>
+ <article class="guide-card"><div class="guide-heading"><span class="guide-number">3</span><div><h2>エラー表示を確認する</h2><p>赤いエラー表示が出た場合は、該当する部隊の設定を見直してください。</p></div></div>
+  <div class="guide-sub"><h3>武将・軍師・戦法の重複</h3><ul><li>同じ部隊内で同じ武将を複数選択できません。</li><li>同じ候補内の別部隊で武将または軍師が重複すると、該当部隊にエラーが表示されます。</li><li>軍師と同じ名前の武将を同じ部隊で使用することはできません。</li><li>同じ戦法を同一部隊内または同じ候補内の別部隊で重複使用できません。</li><li>SP・40Yなどの接頭表記が違っても、武将名本体が同じなら重複として判定します。</li></ul></div>
+  <div class="guide-sub"><h3>陣法・兵種戦法・兵種のルール</h3><ul><li><strong>陣法は1部隊につき1つまで</strong>です。2つ以上選ぶとエラーになります。</li><li><strong>兵種戦法も1部隊につき1つまで</strong>です。2つ以上選ぶとエラーになります。</li><li>兵種戦法に登録された対応兵種と、部隊で選択した兵種が一致している必要があります。</li><li>例：部隊の兵種が「弓」のとき、対応兵種が「盾」の藤甲兵を選ぶとエラーになります。</li></ul></div>
+  <div class="guide-sub"><h3>兵法書・コスト・陣営</h3><ul><li>同じ武将に同じ小分類兵法書を重複して設定するとエラーになります。大分類と小分類は対応する色でそろえてください。</li><li>合計コストが<strong>21以上</strong>になるとコスト超過のエラーが表示されます。</li><li>3武将の陣営が同じ場合は陣営色、異なる場合は「混合」の色で表示されます。</li></ul></div>
+ </article>
+ <article class="guide-card"><div class="guide-heading"><span class="guide-number">4</span><div><h2>保存・呼び出し・共有</h2><p>作成した編成をあとから使えるようにします。</p></div></div>
+  <div class="guide-sub"><ul><li><strong>編成を保存：</strong>現在の編成セットに名前を付けて保存します。</li><li><strong>構築済み編成に登録：</strong>部隊やスタダ編成を登録し、あとから呼び出して編集できます。</li><li><strong>登録編成から呼出：</strong>登録済みの部隊を現在の編成に読み込みます。</li><li><strong>画像で共有：</strong>編成内容を画像として出力できます。</li><li><strong>バックアップを書き出す／読み込む：</strong>「同期・設定」からJSON形式でデータを保存・復元できます。</li></ul><p class="guide-note">編成データは通常、利用しているブラウザ・端末内に保存されます。別の端末やブラウザへ移す場合は、バックアップを書き出して読み込んでください。</p></div>
+ </article>
+ <article class="guide-card"><div class="guide-heading"><span class="guide-number">5</span><div><h2>リセットについて</h2><p>データベースごとにリセット対象が異なります。</p></div></div>
+  <div class="guide-sub"><ul><li><strong>武将データベース：</strong>凸数・秘蔵・アニメーションの設定をリセットします。</li><li><strong>軍師データベース：</strong>軍師の所持状態をリセットします。</li><li><strong>戦法・兵法書データベース：</strong>戦法の所持状態をリセットします。</li><li><strong>編成作成：</strong>現在の編成入力を初期化します。</li></ul><p class="guide-note guide-warning">リセット前に確認メッセージが表示されます。必要なデータは先にバックアップしてください。</p></div>
+ </article>
+</div>
 </section>
 <section id="teams" class="view">
 <div class="hero"><div><h1>編成作成</h1><div class="muted small">スタダ＋5部隊×3候補を管理</div></div><div class="actions"><button class="ghost" onclick="resetPlan()">リセット</button><button class="primary" onclick="savePlan()">編成を保存</button><button onclick="sharePlan()">画像で共有</button></div></div>
